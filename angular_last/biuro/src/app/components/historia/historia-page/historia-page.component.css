@@ -1,0 +1,12 @@
+.maxWidth{
+    max-width: 600px;
+}
+.oczekuje{
+    border: 2px solid blue;
+}
+.zrealizowana{
+    border: 2px solid red;
+}
+.realizacja{
+    border: 2px solid green;
+}

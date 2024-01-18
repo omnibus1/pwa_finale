@@ -1,0 +1,10 @@
+<div>
+    <span>{{user.email}}</span>
+    <select (change)="changeGroup($event)">
+        <option [selected]="user.group=='Admin'">Admin</option>
+        <option [selected]="user.group=='User'">User</option>
+        <option [selected]="user.group=='Manager'">Manager</option>
+        <option [selected]="user.group=='Banned'">Banned</option>
+    </select>
+    <span *ngIf="user.group!=selectedRole && zmienione">*</span>
+</div>

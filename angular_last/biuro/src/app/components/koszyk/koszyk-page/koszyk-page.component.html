@@ -1,0 +1,18 @@
+<div class="container mt-3">
+    <div class="row">
+        <div *ngIf="wycieczki.size">
+            <app-koszyk-item class="col col-12 mt-3" (toggleSelect)="toggleSelectWycieczka(wycieczka)" *ngFor="let wycieczka of getArrayOfWycieczki()" [wycieczka]="wycieczka" [displayPrice]="getDisplayPrice(wycieczka)" [ilosc]="getCountOfWycieczka(wycieczka)" (updateCount)="updateWycieczkaCount($event)"/>
+    
+            <div>Kup wszystko</div>
+            <div class="btn btn-danger" (click)="kupWszystko()">{{calculateSubtotal()}}</div>
+        </div>
+        <div *ngIf="!wycieczki.size" class="mt-3 text-center">
+            <h1>Nie masz nic w koszyku :(</h1>
+        </div>
+
+    </div>
+
+</div>
+
+
+

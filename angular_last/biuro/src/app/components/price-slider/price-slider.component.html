@@ -1,0 +1,4 @@
+<mat-slider min="minValue" max="maxValue" showTickMarks discrete (change)="change()">
+    <input value="1000" matSliderStartThumb [(ngModel)]="selectedLower">
+    <input value="minValue" matSliderEndThumb [(ngModel)]="selectedUpper">
+</mat-slider>

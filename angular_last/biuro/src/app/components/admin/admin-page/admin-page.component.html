@@ -1,0 +1,8 @@
+<div class="container mt-3">
+    <div class="row">
+        <app-user-item *ngFor="let user of users" [user]="user" class="mt-3 text-center p-3 shadow" (roleChange)="zmienRole($event)"/>
+    </div>
+    <button class="btn btn-primary col-12 mt-3" (click)="updateRoles()" [disabled]="newRoles.length==0" >Save changes</button>
+
+</div>
+

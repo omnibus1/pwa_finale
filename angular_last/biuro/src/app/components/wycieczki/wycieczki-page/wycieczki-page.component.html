@@ -1,0 +1,65 @@
+<div class="container maxWidth mt-3">
+    <div class="row">
+        <div class="col col-12">
+            <div class="form-group">
+                <label for="nazwa">Nazwa wycieczki</label>
+                <input type="text" id="nazwa" class="form-control" [(ngModel)]="nameFilter">
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+                <div class="countries mt-1">
+                    <div *ngFor="let kraj of getCountryList()" >
+                        <input type="checkbox"  name="asdasdad" value="{{kraj}}" (change)="changeCoutryFilters(kraj, $event)" (minValue)="getWycieczkiMinPrice()"/>
+                        <label>{{kraj}}</label>
+                    </div>
+                </div>
+                <div>
+                    Ilosc wyświetlanych
+                    <select [(ngModel)]="selectedNumber">
+                        <option selected>1</option>
+                        <option>3</option>
+                        <option>5</option>
+                        <option>10</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div style="display: flex; justify-content: space-between;" class="mt-1">
+                <div>CENA
+                    <mat-slider [min]="getWycieczkiMinPrice()" [max]="getWycieczkiMaxPrice()" showTickMarks discrete>
+                        <input value="getWycieczkiMinPrice()" matSliderStartThumb [(ngModel)]="selectedLower">
+                        <input value="getWycieczkiMaxPrice()" matSliderEndThumb [(ngModel)]="selectedUpper">
+                    </mat-slider>
+                    {{selectedLower}} - {{selectedUpper}}
+                </div>
+                <div>
+                    Ocena
+                    <mat-slider [min]="0" [max]="5" showTickMarks discrete>
+                        <input value="0" matSliderStartThumb [(ngModel)]="ratingLower">
+                        <input value="5" matSliderEndThumb [(ngModel)]="ratingUpper">
+                    </mat-slider>
+                </div>
+
+                
+            </div>
+            <div style="display: flex; justify-content: center;" class="mt-1">
+                <mat-form-field>
+                    <mat-label>Wybierz datę rozpoczęcia wycieczki</mat-label>
+                    <mat-date-range-input [rangePicker]="picker">
+                      <input matStartDate placeholder="Start date" [(ngModel)]="start">
+                      <input matEndDate placeholder="End date" [(ngModel)]="end">
+                    </mat-date-range-input>
+                    <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-date-range-picker #picker></mat-date-range-picker>
+                  </mat-form-field>
+            </div>
+            <div style="display: flex; justify-content: center;" class="mt-1">
+                <div class="btn btn-primary" (click)="clearFilters()">Wyczysc filtry</div>
+            </div>
+
+        </div>
+        <app-pagination [wycieczki]="(wycieczki|wycieczkaFilter:nameFilter:selectedCountries:getPriceRange():getDateRange():getRatingRange())" [itemsPerPage]="selectedNumber"></app-pagination>
+        <!-- <app-wycieczka-item [ngClass]="{'tania': najtansza(wycieczka) == true, 'droga':najdrozsza(wycieczka)==true}"   *ngFor="let wycieczka of (wycieczki|wycieczkaFilter:nameFilter:selectedCountries:getPriceRange():getDateRange():getRatingRange())" [wycieczka]="wycieczka" [ilosc]="getCount(wycieczka)" class="col-12 mt-3 shadow" (dodajDoKoszyka)="dodajWycieczkeDoKoszyka(wycieczka)" (usunZKoszyka)="usunWycieczkeZKoszyka(wycieczka)" [displayPrice]="getDisplayPrice(wycieczka)" [disableButtons]="!enableButtons"/> -->
+    </div>
+</div>

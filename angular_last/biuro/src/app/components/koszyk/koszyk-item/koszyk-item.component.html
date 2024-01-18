@@ -1,0 +1,10 @@
+<div class="d-flex justify-content-around shadow">
+    <img src={{wycieczka.zdjecie}} class="img-fluid image">
+    <span>{{wycieczka.nazwa}}</span>
+    <select (change)="changeCount($event)">
+        <option *ngFor="let i of getCountValues()" value={{i}} [selected]="i===ilosc">{{i}}</option>
+    </select>
+    <div>{{displayPrice}}</div>
+    <input type="checkbox" checked (click)="toggleCheckbox()">
+    <div class="btn btn-danger">kup</div>
+</div>

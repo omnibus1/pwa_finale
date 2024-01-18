@@ -1,0 +1,10 @@
+.zdjecie{
+    width: 100%;
+}
+.maxWidth{
+    max-width: 500px;
+}
+ngb-rating{
+    color: rgb(255, 111, 0);
+    font-size: 100px;
+}

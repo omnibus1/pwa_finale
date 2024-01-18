@@ -1,0 +1,49 @@
+<!-- <div class="container">
+    <label>Nazwa</label>
+    <input type="text" class="form-control" value="{{wycieczka.nazwa}}">
+    <label>Data rozpoczecia</label>
+    <input type="date" class="form-control" value="{{wycieczka.dataRozpoczecia}}">
+    <label>Data zakonczenia</label>
+    <input type="date" class="form-control" value="{{wycieczka.dataZakonczenia}}">
+    <label>Max ilosc miejsc</label>
+    <input type="number" class="form-control" value="{{wycieczka.maxIloscMiejsc}}">
+    <label>Ilosc zajetych miejsc</label>
+    <input type="number" class="form-control" value="{{wycieczka.iloscZajetychMiejsc}}">
+    <label>Cena</label>
+    <input type="number" class="form-control" value="{{wycieczka.cena}}">
+    <label>Zdjecie</label>
+    <input type="text" class="form-control" value="{{wycieczka.zdjecie}}">
+
+</div> -->
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <label>Nazwa</label>
+    <input type="text" class="form-control" value="{{wycieczka.nazwa}}" formControlName="nazwa">
+    <label>Kraj</label>
+    <input type="text" class="form-control" value="{{wycieczka.kraj}}" formControlName="kraj">
+    <label>Opis</label>
+    <input type="text" class="form-control" value="{{wycieczka.opis}}" formControlName="opis">
+    <label>Data rozpoczecia</label>
+    <input type="date" class="form-control" value="{{wycieczka.dataRozpoczecia}}" formControlName="dataRozpoczecia">
+    <label>Data zakonczenia</label>
+    <input type="date" class="form-control" value="{{wycieczka.dataZakonczenia}}" formControlName="dataZakonczenia">
+    <label>Max ilosc miejsc</label>
+    <input type="number" class="form-control" value="{{wycieczka.maxIloscMiejsc}}" formControlName="maxIloscMiejsc">
+    <label>Ilosc zajetych miejsc</label>
+    <input type="number" class="form-control" value="{{wycieczka.iloscZajetychMiejsc}}" formControlName="iloscZajetychMiejsc">
+    <label>Cena</label>
+    <input type="number" class="form-control" value="{{wycieczka.cena}}" formControlName="cena">
+    <label>Zdjecie</label>
+    <input type="text" class="form-control" value="{{wycieczka.zdjecie}}" formControlName="zdjecie">
+    <div formArrayName="karuzelaZdjec">
+      <div *ngFor="let control of karuzelaZdjec.controls; let i = index">
+        <div formGroupName="{{i}}">
+          <label>Zdjecie w karuzeli</label>
+          <input  class="form-control" value="{{getValueAtIndex(i)}}" formControlName="zdjecie"/>
+          <button type="button" (click)="removeControl(i)" class="btn btn-danger" >Remove</button>
+        </div>
+    </div>
+    </div>
+    <div  class="btn btn-primary" (click)="addToForm()">dodaj</div>
+    <button type="submit" class="btn btn-success">Zapisz</button>
+  </form>

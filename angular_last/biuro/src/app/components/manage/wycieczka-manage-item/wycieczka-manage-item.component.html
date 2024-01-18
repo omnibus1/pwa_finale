@@ -1,0 +1,8 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3" routerLink="/wycieczka/{{wycieczka.id}}">{{wycieczka.nazwa}}</div>
+        <img src={{wycieczka.zdjecie}} class="img-fluid image col-3">
+        <div class="btn btn-danger col-3" (click)="usunWycieczke()">USUN</div>
+        <div class="btn btn-success col-3" routerLink="/edit_wycieczka/{{wycieczka.id}}">EDYTUJ</div>
+    </div>
+</div>

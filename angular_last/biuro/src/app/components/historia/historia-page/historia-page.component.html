@@ -1,0 +1,23 @@
+<div class="container maxWidth mt-3 gx-5">
+    <div class="row">
+        <div *ngIf="kupioneWycieczki.length!=0">
+            <div style="display: flex; justify-content: center;" >
+                <div>
+                    <button type="button" class="btn btn-outline-primary" (click)="zmienFiltry('oczekuje')" [ngClass]="{'active': filtry == 'oczekuje' || filtry==''}">oczekuje</button>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-outline-success" (click)="zmienFiltry('realizacja')" [ngClass]="{'active': filtry == 'realizacja' || filtry==''}">realizacja</button>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-outline-danger" (click)="zmienFiltry('zrealizowana')" [ngClass]="{'active': filtry == 'zrealizowana' || filtry==''}">zrealizowana</button>
+                </div>
+            </div>
+        </div>
+        <app-historia-item class="col-12 shadow mt-3 p-3 {{wycieczka.status}}" *ngFor="let wycieczka of (kupioneWycieczki| kupioneFilter:filtry)" [kupionaWycieczka]="wycieczka"/>
+        <div *ngIf="kupioneWycieczki.length==0" style="display: flex; justify-content: center;" class="mt-3">
+            <h1>Brak historii zamówień</h1>
+
+        </div>
+    </div>
+</div>
+

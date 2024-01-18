@@ -1,0 +1,6 @@
+<div class="container mt-3">
+    <div class="row">
+        <app-wycieczka-manage-item *ngFor="let wycieczka of wycieczki" [wycieczka]="wycieczka" class="col-12 mt-3 shadow" (usun)="usunWycieczke($event)"/>
+        <div class="btn btn-success mt-3" routerLink="/edit_wycieczka/0">Dodaj Wycieczke</div>
+    </div>
+</div>

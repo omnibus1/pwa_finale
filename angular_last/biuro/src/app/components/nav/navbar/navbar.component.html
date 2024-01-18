@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark p-3 justify-content-around align-items-center">
+    <a class="navbar-brand" href="#">Biuro Wycieczek Wakacje</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-around align-items-center" id="navbarSupportedContent">
+      <ul class="navbar-nav justify-content-around align-items-center">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/home">Home</a>
+        </li>
+        <li class="nav-item" *ngIf="canAccess('/admin')">
+            <a class="nav-link text-danger" routerLink="/admin">Admin page</a>
+        </li>
+        <li class="nav-item" *ngIf="canAccess('/manage')">
+            <a class="nav-link text-primary" routerLink="/manage">Manager Page</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/wycieczki">Wycieczki</a>
+        </li>
+        <li class="nav-item" *ngIf="canAccess('/historia')">
+            <a class="nav-link" routerLink="/historia" *ngIf="isLoggedIn">Historia</a>
+        </li>
+        <li class="nav-item" *ngIf="canAccess('/koszyk')">
+            <a class="nav-link" routerLink="/koszyk" *ngIf="isLoggedIn">Koszyk</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/login" *ngIf="!isLoggedIn">Login</a>
+        </li>
+        <li class="nav-item" >
+          <a class="nav-link" routerLink="/register" *ngIf="!isLoggedIn">Register</a>
+        </li>
+        <li class="nav-item" *ngIf="isLoggedIn">
+            <a class="nav-link">{{this.email}}</a>
+        </li>
+        <li class="nav-item" >
+            <a class="nav-link" *ngIf="isLoggedIn" (click)="logout()">Logout</a>
+        </li>
+        <li *ngIf="isLoggedIn">
+            <app-navbar-basket class="nav-link"/>
+          </li>
+        
+        <li>
+            <app-currency-changer/>
+        </li>
+      </ul>
+    </div>
+  </nav>

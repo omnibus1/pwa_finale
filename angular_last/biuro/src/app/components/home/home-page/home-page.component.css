@@ -1,0 +1,30 @@
+.background{
+    border: 2px solid black;
+    overflow: hidden;
+    height: calc(100vh - 58px);
+    background: url("https://assets-global.website-files.com/64949e4863d96e26a1da8386/64b9451865a683fd39bccfa1_5f6e93d250a6d04f4eae9f02_Backgrounds-WFU-thumbnail-(size).jpeg");
+    background-size: cover;
+}
+@keyframes moveInFromLeft  {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+@keyframes moveInFromRight {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+.fly-left{
+    animation: moveInFromLeft  1s ease;
+}
+.fly-right{
+    animation: moveInFromRight  1s ease;
+}

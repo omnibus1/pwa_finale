@@ -1,0 +1,18 @@
+<div class="container-fluid">
+    <div class="row">
+        <app-wycieczka-item [ngClass]="{'tania': najtansza(wycieczka) == true, 'droga':najdrozsza(wycieczka)==true}"   
+        *ngFor="let wycieczka of paginatedItems" [wycieczka]="wycieczka" 
+        [ilosc]="getCount(wycieczka)" class="col-12 mt-3 shadow" 
+        (dodajDoKoszyka)="dodajWycieczkeDoKoszyka(wycieczka)" (usunZKoszyka)="usunWycieczkeZKoszyka(wycieczka)" 
+        [displayPrice]="getDisplayPrice(wycieczka)" [disableButtons]="!enableButtons"/>
+        <div *ngIf="paginatedItems.length==0" style="display: flex; justify-content: center;" class="mt-5">
+            <h1>Brak Wycieczek...</h1>
+        </div>
+    </div>
+
+    <div class="pagination mt-3 mb-3" style="display: flex; justify-content: center;">
+        <button *ngFor="let page of getPageNumbers()" (click)="setPage(page)" class="btn btn-outline-primary ms-1 me-1" [ngClass]="{'active': currentPage == page}">
+          {{ page }}
+        </button>
+      </div>
+</div>
